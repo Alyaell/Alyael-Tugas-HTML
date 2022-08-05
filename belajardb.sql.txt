@@ -1,0 +1,85 @@
+Microsoft Windows [Version 10.0.17134.1304]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\USER>cd ..
+
+C:\Users>cd ..
+
+C:\>cd xampp
+
+C:\xampp>cd mysql
+
+C:\xampp\mysql>cd bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| alyael             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| sekolah            |
+| test               |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [(none)]> use alyael
+Database changed
+MariaDB [alyael]> show tables;
+Empty set (0.024 sec)
+
+MariaDB [alyael]> desc tbl_siswa;
+ERROR 1146 (42S02): Table 'alyael.tbl_siswa' doesn't exist
+MariaDB [alyael]> create tbl_siswa
+    -> create tbl_siswa;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tbl_siswa
+create tbl_siswa' at line 1
+MariaDB [alyael]> create table tbl_siswa (id_siswa varchar(5),  nama_siswa varchar(50), alamat(250), primary key(id_siswa));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(250), primary key(id_siswa))' at line 1
+MariaDB [alyael]> create table tbl_siswa (id_siswa varchar(5),  nama_siswa varchar(50), alamat varchar (250), primary key(id_siswa));
+Query OK, 0 rows affected (0.688 sec)
+
+MariaDB [alyael]> show tables;
++------------------+
+| Tables_in_alyael |
++------------------+
+| tbl_siswa        |
++------------------+
+1 row in set (0.001 sec)
+
+MariaDB [alyael]> decs tbl_siswa;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'decs tbl_siswa' at line 1
+MariaDB [alyael]> desc tbl_siswa;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| id_siswa   | varchar(5)   | NO   | PRI | NULL    |       |
+| nama_siswa | varchar(50)  | YES  |     | NULL    |       |
+| alamat     | varchar(250) | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+3 rows in set (0.051 sec)
+
+MariaDB [alyael]> INSERT into tbl_siswa (id_siswa, nama_siswa, alamat) values ("1","Alyael","Cibogo,Subang");
+Query OK, 1 row affected (0.399 sec)
+
+MariaDB [alyael]> select * from tbl_siswa;
++----------+------------+---------------+
+| id_siswa | nama_siswa | alamat        |
++----------+------------+---------------+
+| 1        | Alyael     | Cibogo,Subang |
++----------+------------+---------------+
+1 row in set (0.102 sec)
+
+MariaDB [alyael]>
